@@ -7,12 +7,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect('mongodb://localhost:27017/')
+mongoose.connect('mongodb://127.0.0.1:27017/api')
   .then(() => console.log('Database Connected'))
   .catch((err) => console.log('Connection failed', err));
 
+
 app.get('/', (req, res) => {
-    res.send('<h1>Welcome to the RESTful API!</h1><p>Use the available endpoints to perform CRUD operations.</p>');
+    res.send('<h1>Welcome to the RESTful API!</h1><h1>Home Page');
 });
 
 app.get('/items', async (req, res) => {
