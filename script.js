@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Form inputs
     const nameInput = document.querySelector('#name');
     const descriptionInput = document.querySelector('#description');
-    const quantityInput = document.querySelector('#quantity');
 
     let editMode = false;
     let currentItemId = null;
@@ -26,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             debugLog('Loading items...');
             const response = await fetch(apiUrl);
-            
+
             if (!response.ok) {
                 debugLog('Failed to fetch items', {
                     status: response.status,
@@ -34,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            
+
             const items = await response.json();
             debugLog('Items loaded successfully', items);
             renderItems(items);
@@ -53,13 +52,12 @@ document.addEventListener('DOMContentLoaded', () => {
             row.innerHTML = `
                 <td>${item.name}</td>
                 <td>${item.description}</td>
-                <td>${item.quantity}</td>
                 <td>
                     <button class="editBtn" data-id="${item._id}">Edit</button>
                     <button class="deleteBtn" data-id="${item._id}">Delete</button>
                 </td>
             `;
-            
+
             // Add event listeners to edit and delete buttons
             row.querySelector('.editBtn').addEventListener('click', () => {
                 debugLog('Edit button clicked', item);
@@ -69,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 debugLog('Delete button clicked', item._id);
                 deleteItem(item._id);
             });
-            
+
             itemsTableBody.appendChild(row);
         });
     };
@@ -84,7 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
             modalTitle.textContent = 'Edit Item';
             nameInput.value = item.name;
             descriptionInput.value = item.description;
-            quantityInput.value = item.quantity;
         } else {
             // Add mode
             editMode = false;
@@ -92,7 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
             modalTitle.textContent = 'Add New Item';
             nameInput.value = '';
             descriptionInput.value = '';
-            quantityInput.value = '';
         }
         modal.style.display = 'block';
     };
@@ -108,7 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const itemData = {
             name: nameInput.value.trim(),
             description: descriptionInput.value.trim(),
-            quantity: quantityInput.value.trim()
         };
 
         debugLog('Saving item', {
