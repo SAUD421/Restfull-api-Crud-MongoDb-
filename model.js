@@ -7,10 +7,6 @@ const itemSchema=new mongoose.Schema({
     },
     description:{
         type:String
-    },
-    quantity:{
-        type:Number,
-        default:0
     }
 },{timestamps:true});
 
