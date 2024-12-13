@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Application</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Items Management</h1>
+    <button id="addItemBtn">Add Item</button>
+
+    <div id="modal" class="modal">
+        <div id="formContainer">
+            <!-- Add the missing modalTitle element -->
+            <h2 id="modalTitle">Add New Item</h2>
+            <input type="text" id="name" placeholder="Item Name" required />
+            <input type="text" id="description" placeholder="Description" />
+            <input type="number" id="quantity" placeholder="Quantity" />
+            <button id="saveItemBtn">Save Item</button>
+            <button id="cancelBtn">Cancel</button>
+        </div>
+    </div>
+
+    <table id="itemsTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script src="script.js"></script>
+</body>
+</html>
